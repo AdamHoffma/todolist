@@ -7,17 +7,24 @@ const [task, setTask] = useState({TaskName: ""})
   
 
 const ChangeHandler = e => {    
-    setTask( {
+    setTask({
         [e.target.name]: e.target.value
     })
 }
 
-
+const addTask = choreName => {
+    const newChore = {
+        TaskName: choreName
+    }
+    setTask({
+        TaskName: [task.TaskName, newChore]
+    })
+}
 
 
 const Submit = e => {
     e.preventDefault()
-   setTask(task)
+    addTask(task.TaskName)
 }
     
     
