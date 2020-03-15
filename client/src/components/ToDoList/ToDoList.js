@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import Tasks from '../Tasks/Tasks'
+
 const ToDoList = () => {
 const [task, setTask] = useState({TaskName: ""})
   
@@ -11,15 +13,14 @@ const ChangeHandler = e => {
 }
 
 
-const Submit = newTask => {
-    newTask.preventDefault()   
-    const NewestTask = {
-        TaskName: newTask
-    }
-    setTask({
-        task: [...task, NewestTask]
-    })
+
+
+const Submit = e => {
+    e.preventDefault()
+   setTask(task)
 }
+    
+    
 console.log("task", task)
 
     return (
@@ -34,6 +35,7 @@ console.log("task", task)
                 />
                 <button onClick={Submit}>Enter New Task</button>
             </form>
+            <Tasks task={task} />
         </div>
     )
 }
